@@ -6,7 +6,7 @@ using RegistroDetalle.DAL;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Linq.Expressions;
-
+  //BLL metodos de la clase
 namespace RegistroDetalle.BLL
 {
     public class PersonasBLL
