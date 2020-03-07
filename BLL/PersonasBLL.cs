@@ -39,17 +39,10 @@ namespace RegistroDetalle.BLL
 
             try
             {
-                var Anterior = PersonasBLL.Buscar(persona.PersonaId);
-                foreach(var item in Anterior.Telefonos)
+                db.Database.ExecuteSqlRaw($"Delete FROM TelefonosDetalle Where PersonaId={persona.PersonaId}");
+                foreach (var item in persona.Telefonos)
                 {
-                    if (!persona.Telefonos.Exists(d => d.Id == item.Id))
-                        db.Entry(item).State = EntityState.Deleted;
-                }
-
-                foreach(var item in persona.Telefonos)
-                {
-                    var Estado = item.Id > 0 ? EntityState.Modified : EntityState.Added;
-                    db.Entry(item).State = Estado;
+                    db.Entry(item).State = EntityState.Added;
                 }
                 db.Entry(persona).State = EntityState.Modified;
                 paso = (db.SaveChanges() > 0);

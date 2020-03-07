@@ -86,6 +86,7 @@ namespace RegistroDetalle
         {
             personas.Telefonos.Add(new TelefonosDetalle
                 (
+                    personas.PersonaId,
                     TipoTextBox.Text,
                     TelefonoTextBox.Text
                 )

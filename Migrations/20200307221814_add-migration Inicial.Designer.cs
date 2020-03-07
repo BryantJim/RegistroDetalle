@@ -9,8 +9,8 @@ using RegistroDetalle.DAL;
 namespace RegistroDetalle.Migrations
 {
     [DbContext(typeof(Contexto))]
-    [Migration("20200302232302_Inicial")]
-    partial class Inicial
+    [Migration("20200307221814_add-migration Inicial")]
+    partial class addmigrationInicial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -47,7 +47,7 @@ namespace RegistroDetalle.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("PersonasPersonaId")
+                    b.Property<int>("PersonaId")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Telefono")
@@ -58,7 +58,7 @@ namespace RegistroDetalle.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("PersonasPersonaId");
+                    b.HasIndex("PersonaId");
 
                     b.ToTable("TelefonosDetalle");
                 });
@@ -67,7 +67,9 @@ namespace RegistroDetalle.Migrations
                 {
                     b.HasOne("RegistroDetalle.Entidades.Personas", null)
                         .WithMany("Telefonos")
-                        .HasForeignKey("PersonasPersonaId");
+                        .HasForeignKey("PersonaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

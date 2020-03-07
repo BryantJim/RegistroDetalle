@@ -9,19 +9,22 @@ namespace RegistroDetalle.Entidades
     {
         [Key]
         public int Id { get; set; }
+        public int PersonaId { get; set; }
         public String TipoTelefono { get; set; }
         public String Telefono { get; set; }
 
         public TelefonosDetalle()
         {
             Id = 0;
+            PersonaId = 0;
             TipoTelefono = string.Empty;
             Telefono = string.Empty;
         }
 
-        public TelefonosDetalle( string tipoTelefono, string telefono)
+        public TelefonosDetalle(int personaId,string tipoTelefono, string telefono)
         {
             Id = 0;
+            PersonaId = personaId;
             TipoTelefono = tipoTelefono;
             Telefono = telefono;
         }
