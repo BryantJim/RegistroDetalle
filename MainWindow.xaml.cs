@@ -28,7 +28,7 @@ namespace RegistroDetalle
         public MainWindow()
         {
             InitializeComponent();
-            this.DataContext = personas;
+            this.DataContext = personas; //Para usar el binding del llena clase y llena campos
             PersonaIdTextBox.Text = "0";
         }
 
